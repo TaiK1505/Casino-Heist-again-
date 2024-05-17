@@ -60,6 +60,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6604371579371733989, guid: fcc5a1bda234c1c4f87d6fa35bda175a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6542030358638742084}
+    - targetCorrespondingSourceObject: {fileID: 6604371579371733989, guid: fcc5a1bda234c1c4f87d6fa35bda175a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4660865611958338570}
   m_SourcePrefab: {fileID: 100100000, guid: fcc5a1bda234c1c4f87d6fa35bda175a, type: 3}
 --- !u!212 &5013123943602331385 stripped
 SpriteRenderer:
@@ -92,3 +95,16 @@ MonoBehaviour:
   Highlight: {fileID: 8334107273972880119}
   orignalColor: {r: 1, g: 0.93298537, b: 0.81200004, a: 1}
   offsetColor: {r: 0.90900004, g: 0.82658404, b: 0.676296, a: 1}
+--- !u!114 &4660865611958338570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8762484482143411725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018ab1abb20a0ea4b9cfa09e1e936189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newColor: {r: 0.2999999, g: 0.56819165, b: 1, a: 1}

@@ -15,8 +15,8 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Tile obstacleTile;
 
     [SerializeField] private Transform Camera;
-    
-    private Dictionary<Vector2, Tile> Tiles;
+
+    public List<Tile> tileList = new List<Tile>();
 
     void Awake()
     {
@@ -31,32 +31,32 @@ public class GridManager : MonoBehaviour
 
     public void GenerateGrid()
     {
-        Tiles = new Dictionary<Vector2, Tile>();
+        
         for (int x = 0; x < Width; x++)
         {
             for (int y = 0; y < Height; y++)
             {
                 var randomTile = Random.Range(0, 20) == 5 ? obstacleTile : boardTile;
                 var spawnedTile = Instantiate(randomTile,new Vector3(x, y), Quaternion.identity);
-                spawnedTile.name = $"Tile{x}{y}";
-
-                
+                spawnedTile.name = $"{x}{y}";
                 spawnedTile.Init(x, y);
-
-                Tiles[new Vector2(x, y)] = spawnedTile;
+                tileList.Add(boardTile);
             }
         }
 
         Camera.transform.position = new Vector3((float)Width / 2 - 0.5f, (float)Height / 2 - 0.5f, -10);
         
-        //GameManager.Instance.UpadteGameState(GameManager.GameState.SpawnGrid);
+        //GameManager.Instance.UpdateGameState(GameManager.GameState.SpawnGrid);
     }
 
-    public Tile GetTileAtPosition(Vector2 pos)
+    public Tile GetTileAtPosition(Vector2 pos) //return tile position
     {
-        if (Tiles.TryGetValue(pos, out var tile))
+        foreach (Tile boardTile in tileList)
         {
-            return tile;
+            if (boardTile.transform.position == (Vector3)pos)
+            {
+                return boardTile;
+            }
         }
 
         return null;
