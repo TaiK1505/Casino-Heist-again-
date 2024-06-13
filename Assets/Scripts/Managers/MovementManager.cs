@@ -1,44 +1,40 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Players;
+using Tiles;
+using Tiles.Views;
 using UnityEngine;
 
 public class MovementManager : MonoBehaviour
 {
     public static MovementManager Instance;
-    
-    private SpriteRenderer Renderer;
-    public Color newColor;
 
-    PlayerController playerController;
+    private GridManager gridManager;
+    private DominioViews dominoViews;
 
-    public void Awake()
+    private void Awake()
     {
         Instance = this;
     }
 
-    private void Start()
-    {
-        Renderer = GetComponent<SpriteRenderer>();
-    }
 
-    public void Update()
+    /*void PlayableTiles()
     {
-        // Convert mouse position to world point
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // Check if mouse position overlaps with the tile collider
-        if (GetComponent<Collider2D>().OverlapPoint(mousePosition))
-        { 
-            // Change the color of the tile when clicked
-            if (Input.GetMouseButtonDown(0))
+        for (int x = 0; x < gridManager.Width; x++)
+        {
+            for (int y = 0; y < gridManager.Height; y++)
             {
-                Renderer.color = newColor;
+                if ()
             }
+
+        }
+
+    }*/
+
+    void PlayableDominoes()
+    {
+        {
+            
         }
     }
-        
-    
-    
-    
 }

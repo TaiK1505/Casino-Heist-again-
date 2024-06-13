@@ -32,9 +32,17 @@ PrefabInstance:
       propertyPath: orignalColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5878705669405904671, guid: fcc5a1bda234c1c4f87d6fa35bda175a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6604371579371733989, guid: fcc5a1bda234c1c4f87d6fa35bda175a, type: 3}
       propertyPath: m_Name
       value: ObstacleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604371579371733989, guid: fcc5a1bda234c1c4f87d6fa35bda175a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6930910092874162362, guid: fcc5a1bda234c1c4f87d6fa35bda175a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -119,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ca2eab493ba524ab279fcc56e37272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Walkable: 0
   Renderer: {fileID: 2565345437665660872}
   Highlight: {fileID: 1559217263564817350}
 --- !u!212 &2565345437665660872 stripped

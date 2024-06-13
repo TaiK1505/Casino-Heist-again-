@@ -107,4 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018ab1abb20a0ea4b9cfa09e1e936189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newColor: {r: 0.2999999, g: 0.56819165, b: 1, a: 1}
+  Renderer: {fileID: 5013123943602331385}
+  player1Color: {r: 1, g: 0, b: 0, a: 1}
+  player2Color: {r: 0, g: 0.04988575, b: 1, a: 1}
+  player3Color: {r: 0, g: 1, b: 0.0027780533, a: 1}
+  player4Color: {r: 1, g: 0.91769564, b: 0, a: 1}
