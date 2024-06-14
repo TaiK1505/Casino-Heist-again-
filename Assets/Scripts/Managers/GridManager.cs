@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tiles;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
@@ -24,8 +25,11 @@ public class GridManager : MonoBehaviour
     
     public List<Tile> tileList = new List<Tile>();
     public List<Vector3> tilePos = new List<Vector3>();
+    private Tile currentTile;
 
-    
+    public Tile CurrentTile => currentTile;
+
+
     void Awake()
     {
         Instance = this;
@@ -51,7 +55,7 @@ public class GridManager : MonoBehaviour
                 var spawnedTile = Instantiate(randomTile, new Vector3(x, y), Quaternion.identity);
                 spawnedTile.name = $"{x}{y}";
                 var tileIndex = x * Height + y;
-                spawnedTile.Init(x, y, tileIndex);
+                spawnedTile.Init(x, y, tileIndex, this);
                 tileList.Add(spawnedTile);
             }
         }   
@@ -100,7 +104,15 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        Instantiate(obstacleTile, tilePos[21], Quaternion.identity);
+        var obstacle_positions = new[] { 21, 31, 36, 37, 64, 75, 103, 108, 117 };
+        foreach (var pos in obstacle_positions)
+        {
+            var _tilePos = tilePos[pos];
+            var clone = Instantiate(obstacleTile, _tilePos, Quaternion.identity);
+            (clone as ObstacleTile).SetGridManger(this);
+        }
+        
+        /*Instantiate(obstacleTile, tilePos[21], Quaternion.identity);
         Instantiate(obstacleTile, tilePos[31], Quaternion.identity);
         Instantiate(obstacleTile, tilePos[36], Quaternion.identity);
         Instantiate(obstacleTile, tilePos[37], Quaternion.identity);
@@ -109,7 +121,7 @@ public class GridManager : MonoBehaviour
         Instantiate(obstacleTile, tilePos[103], Quaternion.identity);
         Instantiate(obstacleTile, tilePos[108], Quaternion.identity);
         Instantiate(obstacleTile, tilePos[117], Quaternion.identity);
-        Instantiate(obstacleTile, tilePos[127], Quaternion.identity);
+        Instantiate(obstacleTile, tilePos[127], Quaternion.identity);*/
     }
 
     public Tile GetTileByNumber(int tileNumber)
@@ -140,10 +152,32 @@ public class GridManager : MonoBehaviour
            
                 var spawnedTile = Instantiate(startingTile, tile.transform.position, Quaternion.identity);
                 spawnedTile.name = $"StartingTile{tileNumber}";
-                spawnedTile.Init(tile.X, tile.Y, tile.TileNumber);
+                spawnedTile.Init(tile.X, tile.Y, tile.TileNumber, this);
             
             }
         }
     }
 
+    public void AddSelfAsCurrentTile(Tile tile)
+    {
+        this.currentTile = tile;
+    }
+
+    public void RemoveSelfAsCurrentTile(Tile tile)
+    {
+        if (this.currentTile == tile)
+        {
+            this.currentTile = null;
+        }
+    }
+
+    public void GiveCellDominoData(DominoData data)
+    {
+        if (currentTile == null)
+        {
+            return;
+        }
+
+        currentTile.SetData(data);
+    }
 }

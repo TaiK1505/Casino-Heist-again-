@@ -7,9 +7,9 @@ public class BoardTile : Tile
     [SerializeField] private Color orignalColor;
     [SerializeField] private Color offsetColor;
 
-    public override void Init(int x, int y, int tileNumber)
+    public override void Init(int x, int y, int tileNumber, GridManager gridManager)
     {
-        base.Init(x, y, tileNumber);
+        base.Init(x, y, tileNumber, gridManager);
         var isOffset = (x + y) % 2 == 1;
         Renderer.color = isOffset ? offsetColor : orignalColor;
     }

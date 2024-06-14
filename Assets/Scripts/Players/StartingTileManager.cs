@@ -45,7 +45,7 @@ public class StartingTileManager : MonoBehaviour
                 var spawnedTilePrefab = startingTilePrefabs[index];
                 var spawnedTile = Instantiate(spawnedTilePrefab, gridManager.transform);
                 spawnedTile.name = $"StartingTile{tileNumber}";
-                spawnedTile.GetComponent<Tile>().Init(tile.X, tile.Y, tile.TileNumber);
+                spawnedTile.GetComponent<Tile>().Init(tile.X, tile.Y, tile.TileNumber, this.gridManager);
                 spawnedTile.transform.localPosition = tile.transform.localPosition;
             }
             index++;

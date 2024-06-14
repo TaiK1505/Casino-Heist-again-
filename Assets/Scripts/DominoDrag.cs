@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tiles.Views;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,10 +10,13 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler,IBegin
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
+
+    private DominioViews dominioView;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        dominioView = GetComponent<DominioViews>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -38,5 +42,7 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IDragHandler,IBegin
         Debug.Log("End Drag");
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
+        
+        SceneResources.Instance.GridManager.GiveCellDominoData(dominioView.dominoData);
     }
 }
